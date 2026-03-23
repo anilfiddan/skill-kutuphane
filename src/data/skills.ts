@@ -1101,7 +1101,7 @@ function buildSkills(): Skill[] {
         source: source as any,
         tags,
         slug: id,
-        filePath: `/skills/${cat}/${id}/SKILL.md`,
+        filePath: `/skill-kutuphane/skills/${cat}/${id}/SKILL.md`,
       });
     }
   }
