@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "next dev",
+    "prebuild": "node scripts/copy-skills.mjs",
+    "dev": "node scripts/copy-skills.mjs && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

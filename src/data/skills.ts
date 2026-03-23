@@ -1100,6 +1100,8 @@ function buildSkills(): Skill[] {
         importance,
         source: source as any,
         tags,
+        slug: id,
+        filePath: `/skills/${cat}/${id}/SKILL.md`,
       });
     }
   }

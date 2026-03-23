@@ -1,64 +1,71 @@
 "use client";
 
 import { Skill } from "@/types";
-import { categories, importanceLevels, sectors } from "@/data/categories";
+import { categories, importanceLevels } from "@/data/categories";
 
-const importanceColors: Record<string, string> = {
-  kritik: "bg-red-500/15 text-red-400 border-red-500/20",
-  yuksek: "bg-orange-500/15 text-orange-400 border-orange-500/20",
-  orta: "bg-yellow-500/15 text-yellow-400 border-yellow-500/20",
-  dusuk: "bg-zinc-500/15 text-zinc-400 border-zinc-500/20",
+const dotColors: Record<string, string> = {
+  kritik: "bg-red-500",
+  yuksek: "bg-amber-500",
+  orta: "bg-yellow-400",
+  dusuk: "bg-zinc-300",
 };
 
-const importanceLabels: Record<string, string> = {
-  kritik: "Kritik",
-  yuksek: "Yuksek",
-  orta: "Orta",
-  dusuk: "Dusuk",
+const importanceBg: Record<string, string> = {
+  kritik: "bg-red-50 text-red-600",
+  yuksek: "bg-amber-50 text-amber-600",
+  orta: "bg-yellow-50 text-yellow-700",
+  dusuk: "bg-zinc-50 text-zinc-500",
 };
 
-export default function SkillCard({ skill }: { skill: Skill }) {
+export default function SkillCard({
+  skill,
+  onClick,
+}: {
+  skill: Skill;
+  onClick: () => void;
+}) {
   const category = categories.find((c) => c.key === skill.category);
-  const sector = sectors.find((s) => s.key === skill.sector);
   const importance = importanceLevels.find((i) => i.key === skill.importance);
 
   return (
-    <div className="group relative rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 transition-all hover:border-zinc-700 hover:bg-zinc-900">
-      <div className="mb-3 flex items-start justify-between gap-3">
-        <div className="flex items-center gap-2 text-sm text-zinc-500">
-          <span>{category?.icon}</span>
-          <span>{category?.name}</span>
-        </div>
-        <span
-          className={`shrink-0 rounded-full border px-2 py-0.5 text-xs font-medium ${importanceColors[skill.importance]}`}
-        >
-          {importance?.name}
-        </span>
-      </div>
+    <button
+      onClick={onClick}
+      className="group flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-colors hover:bg-zinc-50 active:bg-zinc-100"
+    >
+      {/* Dot */}
+      <span className={`inline-block h-[7px] w-[7px] shrink-0 rounded-full ${dotColors[skill.importance]}`} />
 
-      <h3 className="mb-1.5 text-base font-semibold text-zinc-100">
-        {skill.name}
-      </h3>
-      <p className="mb-4 text-sm leading-relaxed text-zinc-400">
-        {skill.description}
-      </p>
-
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="rounded-md bg-zinc-800 px-2 py-0.5 text-xs text-zinc-400">
-          {sector?.name}
-        </span>
-        {skill.tags.slice(0, 2).map((tag) => (
-          <span
-            key={tag}
-            className="rounded-md bg-zinc-800/50 px-2 py-0.5 text-xs text-zinc-500"
-          >
-            {tag}
+      {/* Main */}
+      <div className="min-w-0 flex-1">
+        <div className="flex items-baseline gap-2">
+          <span className="truncate text-[13px] font-medium text-zinc-800 group-hover:text-zinc-900">
+            {skill.name}
           </span>
-        ))}
-        <span className="ml-auto text-xs text-zinc-600">
-          {skill.source === "kalfa" ? "Kalfa" : skill.source === "tezgah" ? "Tezgah" : "SaaS"}
-        </span>
+        </div>
+        <p className="mt-px truncate text-[11px] text-zinc-400">
+          {skill.description}
+        </p>
       </div>
-    </div>
+
+      {/* Category */}
+      <span className="hidden w-40 shrink-0 truncate text-[11px] text-zinc-400 sm:block">
+        {category?.name}
+      </span>
+
+      {/* Importance badge */}
+      <span className={`hidden w-20 shrink-0 text-center md:inline-block rounded-full px-2 py-[2px] text-[10px] font-medium ${importanceBg[skill.importance]}`}>
+        {importance?.name}
+      </span>
+
+      {/* Arrow */}
+      <svg
+        className="h-3.5 w-3.5 shrink-0 text-zinc-300 transition-colors group-hover:text-zinc-500"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
   );
 }

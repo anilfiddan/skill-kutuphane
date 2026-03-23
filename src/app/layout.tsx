@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Skill Kütüphanesi — Şirket İçi Araç Seti",
-  description:
-    "1000+ profesyonel skill ile iş süreçlerinizi hızlandırın. Yapay zeka, pazarlama, geliştirme, satış ve daha fazlası.",
+  title: "Anıl Fidan ile Skill Kütüphanesine Doğru",
+  description: "1000+ profesyonel skill — şirket içi operasyonel kütüphane.",
 };
 
 export default function RootLayout({
@@ -13,8 +12,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="tr">
-      <body className="bg-zinc-950 text-zinc-100 antialiased">
+    <html lang="tr" className="overflow-x-hidden">
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="min-h-screen overflow-x-hidden bg-white font-sans text-zinc-900 antialiased">
         {children}
       </body>
     </html>

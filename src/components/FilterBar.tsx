@@ -33,13 +33,16 @@ export default function FilterBar({
       ? categories
       : categories.filter((c) => c.sector === selectedSector);
 
+  const hasFilters =
+    search || selectedSector !== "all" || selectedCategory !== "all" || selectedImportance !== "all";
+
   return (
-    <div className="sticky top-0 z-20 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-xl">
-      <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
+    <div className="sticky top-0 z-20 w-full border-b border-white/5 bg-[#0a0a0b]/90 backdrop-blur-md">
+      <div className="mx-auto w-full max-w-6xl px-5 py-3">
         {/* Search */}
-        <div className="relative mb-4">
+        <div className="relative">
           <svg
-            className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500"
+            className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-zinc-600"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -53,23 +56,22 @@ export default function FilterBar({
           </svg>
           <input
             type="text"
-            placeholder="Skill ara... (orn: api tasarimi, marka, fiyatlandirma)"
+            placeholder="Skill ara..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full rounded-lg border border-zinc-800 bg-zinc-900 py-2.5 pl-10 pr-4 text-sm text-zinc-100 placeholder-zinc-500 outline-none transition-colors focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600"
+            className="w-full rounded-md border border-white/5 bg-white/[0.03] py-2 pl-9 pr-3 text-sm text-zinc-200 placeholder-zinc-600 outline-none transition-colors focus:border-white/10 focus:bg-white/[0.05]"
           />
         </div>
 
-        {/* Filters */}
-        <div className="flex flex-wrap items-center gap-3">
-          {/* Sektor */}
+        {/* Filters Row */}
+        <div className="mt-2.5 flex items-center gap-2 overflow-x-auto">
           <select
             value={selectedSector}
             onChange={(e) => {
               setSelectedSector(e.target.value as SectorKey | "all");
               setSelectedCategory("all");
             }}
-            className="rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-300 outline-none focus:border-zinc-600"
+            className="shrink-0 rounded-md border border-white/5 bg-white/[0.03] px-2.5 py-1.5 text-xs text-zinc-400 outline-none focus:border-white/10"
           >
             <option value="all">Tum Sektorler</option>
             {sectors.map((s) => (
@@ -79,33 +81,29 @@ export default function FilterBar({
             ))}
           </select>
 
-          {/* Kategori */}
           <select
             value={selectedCategory}
             onChange={(e) =>
               setSelectedCategory(e.target.value as CategoryKey | "all")
             }
-            className="rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-300 outline-none focus:border-zinc-600"
+            className="shrink-0 rounded-md border border-white/5 bg-white/[0.03] px-2.5 py-1.5 text-xs text-zinc-400 outline-none focus:border-white/10"
           >
             <option value="all">Tum Kategoriler</option>
             {filteredCategories.map((c) => (
               <option key={c.key} value={c.key}>
-                {c.icon} {c.name}
+                {c.name}
               </option>
             ))}
           </select>
 
-          {/* Onem */}
           <select
             value={selectedImportance}
             onChange={(e) =>
-              setSelectedImportance(
-                e.target.value as ImportanceLevel | "all"
-              )
+              setSelectedImportance(e.target.value as ImportanceLevel | "all")
             }
-            className="rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-300 outline-none focus:border-zinc-600"
+            className="shrink-0 rounded-md border border-white/5 bg-white/[0.03] px-2.5 py-1.5 text-xs text-zinc-400 outline-none focus:border-white/10"
           >
-            <option value="all">Tum Onem Dereceleri</option>
+            <option value="all">Tum Onem</option>
             {importanceLevels.map((i) => (
               <option key={i.key} value={i.key}>
                 {i.name}
@@ -113,9 +111,22 @@ export default function FilterBar({
             ))}
           </select>
 
-          {/* Sonuc */}
-          <span className="ml-auto text-xs text-zinc-500">
-            {filteredCount} / {totalCount} skill
+          {hasFilters && (
+            <button
+              onClick={() => {
+                setSearch("");
+                setSelectedSector("all");
+                setSelectedCategory("all");
+                setSelectedImportance("all");
+              }}
+              className="shrink-0 rounded-md px-2 py-1.5 text-xs text-zinc-500 transition-colors hover:text-zinc-300"
+            >
+              Temizle
+            </button>
+          )}
+
+          <span className="ml-auto shrink-0 text-[11px] tabular-nums text-zinc-600">
+            {filteredCount}/{totalCount}
           </span>
         </div>
       </div>

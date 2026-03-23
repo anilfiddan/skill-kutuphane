@@ -7,6 +7,8 @@ export interface Skill {
   importance: ImportanceLevel;
   source: "kalfa" | "tezgah" | "saas-launcher";
   tags: string[];
+  slug: string;
+  filePath: string;
 }
 
 export type CategoryKey =
