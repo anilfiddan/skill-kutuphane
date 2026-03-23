@@ -1,0 +1,140 @@
+import { Category, Sector, ImportanceInfo } from "@/types";
+
+export const sectors: Sector[] = [
+  { key: "teknoloji", name: "Teknoloji", color: "bg-blue-500" },
+  { key: "pazarlama", name: "Pazarlama & İletişim", color: "bg-purple-500" },
+  { key: "is-yonetimi", name: "İş Yönetimi", color: "bg-amber-500" },
+  { key: "satis", name: "Satış & Ticaret", color: "bg-green-500" },
+  { key: "tasarim", name: "Tasarım", color: "bg-pink-500" },
+  { key: "kisisel-gelisim", name: "Kişisel Gelişim", color: "bg-teal-500" },
+  { key: "girisimcilik", name: "Girişimcilik", color: "bg-orange-500" },
+];
+
+export const importanceLevels: ImportanceInfo[] = [
+  { key: "kritik", name: "Kritik", color: "bg-red-500" },
+  { key: "yuksek", name: "Yüksek", color: "bg-orange-500" },
+  { key: "orta", name: "Orta", color: "bg-yellow-500" },
+  { key: "dusuk", name: "Düşük", color: "bg-gray-400" },
+];
+
+export const categories: Category[] = [
+  {
+    key: "ai-automation",
+    name: "Yapay Zeka & Otomasyon",
+    description: "Yapay zeka uygulaması, prompt mühendisliği, iş akışı otomasyonu ve AI stratejisi",
+    sector: "teknoloji",
+    icon: "🤖",
+  },
+  {
+    key: "content",
+    name: "İçerik & Metin Yazarlığı",
+    description: "Blog, rapor, açılış sayfası, senaryo ve tüm formatlarda içerik üretimi",
+    sector: "pazarlama",
+    icon: "✍️",
+  },
+  {
+    key: "consulting",
+    name: "Danışmanlık & Strateji",
+    description: "Strateji çerçeveleri, pazar analizi, müşteri ilişkileri ve danışmanlık hizmetleri",
+    sector: "is-yonetimi",
+    icon: "💼",
+  },
+  {
+    key: "customer-success",
+    name: "Müşteri Başarısı & Destek",
+    description: "Müşteri oryantasyonu, elde tutma, destek operasyonları ve müşteri deneyimi",
+    sector: "satis",
+    icon: "🤝",
+  },
+  {
+    key: "design",
+    name: "Tasarım & Yaratıcılık",
+    description: "Tasarım özetleri, marka kimliği, UX/UI ve görsel tasarım süreçleri",
+    sector: "tasarim",
+    icon: "🎨",
+  },
+  {
+    key: "development",
+    name: "Yazılım Geliştirme",
+    description: "Kod kalitesi, mimari, test, CI/CD, dokümantasyon ve mühendislik pratikleri",
+    sector: "teknoloji",
+    icon: "⚡",
+  },
+  {
+    key: "ecommerce",
+    name: "E-ticaret",
+    description: "Çevrimiçi mağaza yönetimi, ürün listeleme, dönüşüm optimizasyonu",
+    sector: "satis",
+    icon: "🛒",
+  },
+  {
+    key: "email",
+    name: "E-posta Pazarlama",
+    description: "E-posta kampanyaları, otomasyon, teslim edilebilirlik ve abone yönetimi",
+    sector: "pazarlama",
+    icon: "📧",
+  },
+  {
+    key: "finance",
+    name: "Finans & Muhasebe",
+    description: "Finansal modelleme, bütçeleme, tahminleme, fiyatlandırma ve raporlama",
+    sector: "is-yonetimi",
+    icon: "💰",
+  },
+  {
+    key: "marketing",
+    name: "Pazarlama & Reklamcılık",
+    description: "Kampanya stratejisi, hedef kitle araştırması, marka konumlandırma",
+    sector: "pazarlama",
+    icon: "📢",
+  },
+  {
+    key: "product",
+    name: "Ürün Yönetimi",
+    description: "Ürün stratejisi, yol haritaları, kullanıcı araştırması ve önceliklendirme",
+    sector: "is-yonetimi",
+    icon: "📦",
+  },
+  {
+    key: "productivity",
+    name: "Kişisel Verimlilik",
+    description: "Zaman yönetimi, hedef belirleme, karar verme ve kişisel etkinlik",
+    sector: "kisisel-gelisim",
+    icon: "⏱️",
+  },
+  {
+    key: "sales",
+    name: "Satış & Gelir",
+    description: "Satış stratejisi, potansiyel müşteri bulma, müzakere ve gelir operasyonları",
+    sector: "satis",
+    icon: "📈",
+  },
+  {
+    key: "seo",
+    name: "SEO & Arama",
+    description: "Anahtar kelime araştırması, teknik SEO, bağlantı oluşturma ve analitik",
+    sector: "pazarlama",
+    icon: "🔍",
+  },
+  {
+    key: "social-media",
+    name: "Sosyal Medya",
+    description: "Platforma özel içerik, zamanlama, etkileşim ve analitik",
+    sector: "pazarlama",
+    icon: "📱",
+  },
+  {
+    key: "startup",
+    name: "Girişimcilik",
+    description: "İş planlama, yatırım toplama, doğrulama, büyüme ve girişim operasyonları",
+    sector: "girisimcilik",
+    icon: "🚀",
+  },
+  {
+    key: "saas",
+    name: "SaaS Geliştirme",
+    description: "Sıfırdan production-ready SaaS uygulaması kurulum ve yönetimi",
+    sector: "teknoloji",
+    icon: "☁️",
+  },
+];
